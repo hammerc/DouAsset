@@ -1,0 +1,22 @@
+{
+    "name": "DouAssetEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c2ae8de34c84fa54ab42260a25fdb552",
+        "GUID:bbde805d927e795439d7a746d1749cab",
+        "GUID:5a46ad82eac024e4fbb6a0516a5def17",
+        "GUID:4c2bb486b714b4a42a918a45cdd61399"
+    ],
+    "includePlatforms": [
+        "Editor",
+        "WSA"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
