@@ -6,6 +6,7 @@ using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace BuildPipeline
 {
@@ -35,15 +36,15 @@ namespace BuildPipeline
         [LabelText("打包步骤")]
         [ListDrawerSettings]
         [Searchable]
-        [OnCollectionChanged("OnStepListChangedBefore", "OnStepListChangedAfter")]
-        public List<BuildStepData> stepList;
+        [OnCollectionChanged("OnCommandListChangedBefore", "OnCommandListChangedAfter")]
+        public List<BuildCommandData> commandList;
 
-        public void OnStepListChangedBefore(CollectionChangeInfo info, List<BuildStepData> value)
+        public void OnCommandListChangedBefore(CollectionChangeInfo info, List<BuildCommandData> value)
         {
             _listChangedFlag = true;
         }
 
-        public void OnStepListChangedAfter(CollectionChangeInfo info, List<BuildStepData> value)
+        public void OnCommandListChangedAfter(CollectionChangeInfo info, List<BuildCommandData> value)
         {
             _listChangedFlag = true;
         }
@@ -90,7 +91,7 @@ namespace BuildPipeline
         private void ResetData()
         {
             _buildData = BuildDataManager.instance.LoadBuildData();
-            stepList = _buildData.stepList;
+            commandList = _buildData.commandList;
         }
     }
 }

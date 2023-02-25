@@ -1,9 +1,9 @@
 ﻿namespace BuildPipeline
 {
     /// <summary>
-    /// 构建步骤
+    /// 构建指令
     /// </summary>
-    public enum BuildSteps
+    public enum BuildCommands
     {
         /// <summary>
         /// 打包策略配置

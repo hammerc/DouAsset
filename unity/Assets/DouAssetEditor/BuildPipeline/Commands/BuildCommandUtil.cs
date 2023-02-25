@@ -5,13 +5,13 @@ namespace BuildPipeline
     /// <summary>
     /// 构建步骤常量定义
     /// </summary>
-    public static class BuildStepUtil
+    public static class BuildCommandUtil
     {
-        public static Type GetStepDataClass(BuildSteps step)
+        public static Type GetCommandDataClass(BuildCommands commands)
         {
-            switch (step)
+            switch (commands)
             {
-                case BuildSteps.BundlePolicy:
+                case BuildCommands.BundlePolicy:
                     return typeof(BundlePolicyData);
             }
             return null;

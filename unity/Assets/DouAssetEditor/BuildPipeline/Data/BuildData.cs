@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace BuildPipeline
 {
@@ -10,11 +11,11 @@ namespace BuildPipeline
     /// </summary>
     public class BuildData : ScriptableObject
     {
-        public List<BuildStepData> stepList;
+        public List<BuildCommandData> commandList;
     }
 
     [Serializable]
-    public class BuildStepData
+    public class BuildCommandData
     {
         /// <summary>
         /// 是否启用
@@ -29,7 +30,7 @@ namespace BuildPipeline
         [LabelText("类型")]
         [HorizontalGroup("HGroup", LabelWidth = 35, Width = 150, PaddingLeft = 10)]
         [EnableIf("active")]
-        public BuildSteps step;
+        public BuildCommands commands;
 
         /// <summary>
         /// 构建平台
@@ -60,7 +61,7 @@ namespace BuildPipeline
             {
                 var name = $"Build_{Guid.NewGuid().ToString()}";
                 dataPath = BuildDef.BuildConfigDir + name + ".asset";
-                var type = BuildStepUtil.GetStepDataClass(step);
+                var type = BuildCommandUtil.GetCommandDataClass(commands);
                 BuildUtil.CreateSerializeFile(type, dataPath);
             }
         }
