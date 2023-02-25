@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -18,13 +19,19 @@ namespace BuildPipeline
         {
             var window = GetWindow<BuildMainWindow>();
             window.titleContent = new GUIContent("打包");
-            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(600, 800);
+            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(900, 600);
         }
 
         private bool _listChangedFlag = false;
-
+        private bool _supportPlatform = false;
+        private bool _nonsupportPlatform = false;
+        private string _supportBuildInfo;
+        private string _nonsupportBuildInfo;
+        
         private BuildData _buildData;
 
+        [InfoBox("$_supportBuildInfo", visibleIfMemberName:"_supportPlatform", InfoMessageType = InfoMessageType.Info)]
+        [InfoBox("$_nonsupportBuildInfo", visibleIfMemberName:"_nonsupportPlatform", InfoMessageType = InfoMessageType.Error)]
         [LabelText("打包步骤")]
         [ListDrawerSettings]
         [Searchable]
@@ -72,6 +79,12 @@ namespace BuildPipeline
         public void OnInspectorInit()
         {
             ResetData();
+            
+            var currentPlatform = BuildPipelineManager.instance.GetCurrentPlatform();
+            _supportPlatform = currentPlatform != BuildPlatform.Nonsupport;
+            _nonsupportPlatform = currentPlatform == BuildPlatform.Nonsupport;
+            _supportBuildInfo = $"当前平台[{Enum.GetName(typeof(BuildPlatform), currentPlatform)}]支持打包。";
+            _nonsupportBuildInfo = "当前平台不支持打包，请切换目标平台。";
         }
 
         private void ResetData()

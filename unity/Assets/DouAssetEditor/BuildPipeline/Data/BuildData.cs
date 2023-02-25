@@ -27,10 +27,18 @@ namespace BuildPipeline
         /// 配置步骤类型
         /// </summary>
         [LabelText("类型")]
-        [HorizontalGroup("HGroup", LabelWidth = 35, Width = 200, PaddingLeft = 10)]
+        [HorizontalGroup("HGroup", LabelWidth = 35, Width = 150, PaddingLeft = 10)]
         [EnableIf("active")]
         public BuildSteps step;
 
+        /// <summary>
+        /// 构建平台
+        /// </summary>
+        [LabelText("平台")]
+        [HorizontalGroup("HGroup", LabelWidth = 35, Width = 150, PaddingLeft = 10)]
+        [EnableIf("active")]
+        public BuildPlatform platform = BuildPlatform.All;
+        
         /// <summary>
         /// 步骤描述
         /// </summary>
@@ -58,16 +66,23 @@ namespace BuildPipeline
         }
 
         [Button("配置")]
-        [HorizontalGroup("HGroup", Width = 80, PaddingLeft = 10)]
+        [HorizontalGroup("HGroup", Width = 60, PaddingLeft = 10)]
         [EnableIf("active")]
         public void Setting()
         {
         }
 
         [Button("执行")]
-        [HorizontalGroup("HGroup", Width = 80, PaddingLeft = 10, PaddingRight = 10)]
+        [HorizontalGroup("HGroup", Width = 60, PaddingLeft = 10, PaddingRight = 10)]
         [EnableIf("active")]
         public void Apply()
+        {
+        }
+
+        [Button("复制")]
+        [HorizontalGroup("HGroup", Width = 60, PaddingLeft = 10, PaddingRight = 10)]
+        [EnableIf("active")]
+        public void Duplicate()
         {
         }
     }
