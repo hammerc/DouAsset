@@ -3,7 +3,7 @@
 namespace BuildPipeline
 {
     /// <summary>
-    /// 构建步骤常量定义
+    /// 构建命令常量定义
     /// </summary>
     public static class BuildCommandUtil
     {

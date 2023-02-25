@@ -25,7 +25,7 @@ namespace BuildPipeline
         public bool active = true;
         
         /// <summary>
-        /// 配置步骤类型
+        /// 配置命令类型
         /// </summary>
         [LabelText("类型")]
         [HorizontalGroup("HGroup", LabelWidth = 35, Width = 150, PaddingLeft = 10)]
@@ -41,7 +41,7 @@ namespace BuildPipeline
         public BuildPlatform platform = BuildPlatform.All;
         
         /// <summary>
-        /// 步骤描述
+        /// 命令描述
         /// </summary>
         [LabelText("描述")]
         [HorizontalGroup("HGroup", LabelWidth = 35, PaddingLeft = 10)]

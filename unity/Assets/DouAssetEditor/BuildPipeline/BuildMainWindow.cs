@@ -33,7 +33,7 @@ namespace BuildPipeline
 
         [InfoBox("$_supportBuildInfo", visibleIfMemberName:"_supportPlatform", InfoMessageType = InfoMessageType.Info)]
         [InfoBox("$_nonsupportBuildInfo", visibleIfMemberName:"_nonsupportPlatform", InfoMessageType = InfoMessageType.Error)]
-        [LabelText("打包步骤")]
+        [LabelText("打包命令")]
         [ListDrawerSettings]
         [Searchable]
         [OnCollectionChanged("OnCommandListChangedBefore", "OnCommandListChangedAfter")]
